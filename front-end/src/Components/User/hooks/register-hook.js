@@ -9,7 +9,7 @@ const useRegister=()=>{
     const {register, handleSubmit, formState:{errors}}=useForm({
         resolver : zodResolver(registerSchema),
         defaultValues : {
-            email:'sample@example.com',
+            email:'',
             password :'',
             name:''
         }
