@@ -7,10 +7,7 @@ dotenv.config();
 import cors from 'cors'
 import { shortRoute } from './src/api/v1/routes/url-short-routes.js';
 const app=express();
-app.use(cors({
-    origin:'http://51.20.127.60:3000',
-    credentials: true
-}));
+app.use(cors());
 app.use(express.json());
 app.use('/', userRoutes);
 app.use('/', shortRoute);
@@ -18,11 +15,10 @@ app.use('/', shortRoute);
 //404 middleware
 app.use(error404);
 
-const PORT = process.env.PORT || 1234;
 const promise=connectToDB();
 promise.then(result=>{
     console.log("Database connection created");
-    const server=app.listen(PORT,'0.0.0.0', err=>{
+    const server=app.listen(1234, err=>{
     if(err){
         console.log("Server crash",err);
     }else{
